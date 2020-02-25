@@ -1,13 +1,15 @@
 module.exports = function(grunt){
     grunt.initConfig({
-        less:{
-            complie:{
-                files:{'dist/compiled.css':'css/*.less'}
-            }
+        htmlhint:{
+            options:{
+                htmlhintrc:'.htmlhintrc'
+            },
+            src:['*.html']
         }
+        
     });
 
-    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-htmlhint');
 
-    grunt.registerTask('default',['less:complie'])
+    grunt.registerTask('default',['htmlhint'])
 };
