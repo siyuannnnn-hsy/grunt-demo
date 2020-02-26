@@ -5,11 +5,18 @@ module.exports = function(grunt){
                 csslintrc:'.csslintrc'
             },
             src:['*.css']
+        },
+        mocha_istanbul:{
+            coverage:{
+                src:'test'
+            }
         }
         
     });
 
-    grunt.loadNpmTasks('grunt-contrib-csslint');
+    grunt.loadNpmTasks('grunt-mocha-cli');
+    grunt.loadNpmTasks('grunt-mocha-istanbul');
 
-    grunt.registerTask('default',['csslint'])
+    grunt.registerTask('default',['mochacli']);
+    grunt.registerTask('cover',['mocha_istanbul']);
 };
