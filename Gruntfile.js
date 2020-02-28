@@ -1,22 +1,17 @@
 module.exports = function(grunt){
     grunt.initConfig({
-        csslint:{
-            options:{
-                csslintrc:'.csslintrc'
+        mocha:{
+            test:{
+                src:['test/index.html']
             },
-            src:['*.css']
-        },
-        mocha_istanbul:{
-            coverage:{
-                src:'test'
+            options:{
+                run:true,
+                reportor:'Dot'
             }
         }
-        
     });
 
-    grunt.loadNpmTasks('grunt-mocha-cli');
-    grunt.loadNpmTasks('grunt-mocha-istanbul');
+    grunt.loadNpmTasks('grunt-mocha');
 
-    grunt.registerTask('default',['mochacli']);
-    grunt.registerTask('cover',['mocha_istanbul']);
+    grunt.registerTask('default',['mocha']);
 };
