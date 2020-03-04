@@ -1,15 +1,34 @@
 module.exports = function (grunt) {
   grunt.initConfig({
-    imagemin: {                               
-      files: {
-        expand: true,
-        src: ['images/*.{png,jpg,gif}'],
-        dest: 'dist/'
+    mochacli: {
+      options: {
+        reporter: 'spec',
+        bail: true
+      },
+      all: ['test/*.js']
+    },
+    mocha_istanbul: {
+      coverage: {
+        src: 'test'
+      }
+    },
+    istanbul_check_coverage: {
+      default: {
+        options: {
+          coverageFolder: 'coverage*',
+          check: {
+            lines: 90,
+            statements: 90
+          }
+        }
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-mocha-cli');
+  grunt.loadNpmTasks('grunt-mocha-istanbul');
 
-  grunt.registerTask('default', ['imagemin']);    
+  grunt.registerTask('default', ['mochacli']);
+  grunt.registerTask('cover', ['mocha_istanbul']);
+  grunt.registerTask('cover-check', ['istanbul_check_coverage']);
 };
