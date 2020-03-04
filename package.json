@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Grunt 试炼场",
   "main": "index.js",
-  "dependencies": {
-    "grunt-contrib-cssmin": "^2.2.1"
-  },
   "scripts": {
     "test": "grunt"
   },
